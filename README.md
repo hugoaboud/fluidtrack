@@ -1,5 +1,5 @@
 # fluidtrack
-An open sample library for tracking object position on a terrain with a fluid vector field.
+Open Source library for tracking objects on terrain fluid flows
 
 #### Dependencies
 
