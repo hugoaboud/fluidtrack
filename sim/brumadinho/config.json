@@ -1,0 +1,39 @@
+{
+  "input":
+  {
+    "terrain":"sim/brumadinho/terrain.csv",
+    "flow":"sim/brumadinho/fluid.flow"
+  },
+  "output" : "brumadinho.out",
+
+  "world":
+  {
+    "gravity": [0.0, 0.0, -0.0981]
+  },
+
+  "terrain":
+  {
+    "cols" : 80,
+    "rows" : 67,
+    "scalex" : 30.5748,
+    "scaley" : 25.6063,
+    "bounciness" : 0.02,
+    "friction" : 1,
+    "rollingResistance" : 0.15
+  },
+
+  "object":
+  {
+    "position" : [-0.153, -2.3, -0.15],
+    "radius" : 0.01,
+    "mass" : 1,
+    "bounciness" : 0.1,
+    "friction" : 1,
+    "rollingResistance" : 0.02
+  },
+
+  "flow":
+  {
+    "threshold" : 0.2
+  }
+}

@@ -1,3 +1,4 @@
 fluidtrack
-obj/
+src/*.o
 sim/sandbox/cache_fluid
+sim/brumadinho/cache_fluid

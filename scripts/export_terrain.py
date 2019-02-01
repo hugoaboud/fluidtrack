@@ -14,7 +14,7 @@ outputFile = 'set/some/file/here'
 
 verts = [ bpy.context.object.matrix_world * v.co for v in bpy.context.object.data.vertices ]
 
-csvLines = [ ";".join([ str(v) for v in co ]) + "\n" for co in verts ]
+csvLines = [ ",".join([ str(v) for v in co ]) + "\n" for co in verts ]
 
 f = open( outputFile, 'w' )
 f.writelines( csvLines )

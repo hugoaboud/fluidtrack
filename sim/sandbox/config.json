@@ -1,0 +1,39 @@
+{
+  "input":
+  {
+    "terrain":"sim/sandbox/terrain.csv",
+    "flow":"sim/sandbox/fluid.flow"
+  },
+  "output" : "sandbox.out",
+
+  "world":
+  {
+    "gravity": [0.0, 0.0, -9.81]
+  },
+
+  "terrain":
+  {
+    "cols" : 5,
+    "rows" : 5,
+    "scalex" : 6,
+    "scaley" : 6,
+    "bounciness" : 0.02,
+    "friction" : 1,
+    "rollingResistance" : 0.15
+  },
+
+  "object":
+  {
+    "position" : [-1, 1, 1.5],
+    "radius" : 1,
+    "mass" : 1,
+    "bounciness" : 0.1,
+    "friction" : 1,
+    "rollingResistance" : 0.02
+  },
+
+  "flow":
+  {
+    "threshold" : 0.2
+  }
+}

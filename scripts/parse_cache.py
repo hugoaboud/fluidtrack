@@ -7,7 +7,7 @@
 #   a .flow binary file containing vectors for each simulation frame
 #
 #   usage:
-#   python parse_cache.py <cache_folder> <output_file> <anim_time>
+#   python parse_cache.py <cache_folder> <output_file> <anim_time> pos[0,0,0] scale[1,1,1]
 #
 #   @author: Hugo Aboud
 ##
@@ -33,10 +33,17 @@ if (len(sys.argv) < 4):
 else:
     anim_time = int(sys.argv[3])
 
-prefix = "fluidsurface_final_"
+if (len(sys.argv) < 5):
+    exit("Error: No position specified")
+else:
+    location = [float(p) for p in sys.argv[4].split("]")[0].split("[")[1].split(",")]
 
-location = [0, 0, 1.5]
-scale = [3, 3, 3]
+if (len(sys.argv) < 6):
+    exit("Error: No scale specified")
+else:
+    scale = [float(p) for p in sys.argv[5].split("]")[0].split("[")[1].split(",")]
+
+prefix = "fluidsurface_final_"
 
 # Count how many frames are in cache
 count = 0

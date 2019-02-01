@@ -1,15 +1,34 @@
-CC=g++
-CFLAGS= -I/home/aboud/reactphysics3d/src -g	-Wall
-LDFLAGS = -L/usr/local/lib64 -lreactphysics3d
+TARGET = fluidtrack
+CC = g++
 
-default: fluidtrack
+DEBUGW = -Wall
+DEBUG = -g -O0 $(DEBUGW)
 
-obj/fluidtrack.o: src/fluidtrack.cpp
-	$(CC) -c src/fluidtrack.cpp -o obj/fluidtrack.o $(CFLAGS)
+CFLAGS = $(DEBUG)
+LDFLAGS = $(DEBUG) -L/usr/local/lib64 -lreactphysics3d
 
-fluidtrack: obj/fluidtrack.o
-	$(CC) obj/fluidtrack.o -o fluidtrack $(LDFLAGS)
+PLATFORM = LINUX
+SOURCE = src
+INCLUDE = -Isrc -Ipicojson -I/home/aboud/reactphysics3d/src
+
+OBJECTS = $(patsubst %.cpp, %.o, $(wildcard $(SOURCE)/*/*.cpp $(SOURCE)/*.cpp))
+#HEADERS = $(wildcard $(SOURCE)/*/*.h $(SOURCE)/*.h)
+
+default: $(TARGET)
+all: default
+
+debug:
+	@echo "OBJECTS"
+	@echo $(OBJECTS)
+	@echo "HEADERS"
+	@echo $(HEADERS)
+
+%.o: %.cpp #$(HEADERS)
+	$(CC) $(INCLUDE) -c $< -o $@ -D__$(PLATFORM)__ $(CFLAGS)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@ $(LDFLAGS)
 
 clean:
-	rm obj/*
-	rm fluidtrack
+	rm -f $(SOURCE)/*.o
+	rm -f $(TARGET)
