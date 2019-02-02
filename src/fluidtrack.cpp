@@ -38,10 +38,12 @@ rp3d::RigidBody* createRigidBody(rp3d::DynamicsWorld* world, rp3d::Vector3 posit
   return body;
 }
 
-bool vertexSort(float* a, float* b) {
-  if (a[1] < b[1]) return true;
-  else return a[1] == b[1] && a[0] < b[0];
-  return false;
+bool ySort(float* a, float* b) {
+  return (a[1] < b[1]);
+}
+
+bool xSort(float* a, float* b) {
+  return (a[0] < b[0]);
 }
 
 /**
@@ -91,7 +93,8 @@ Terrain* parseTerrain(std::string csv_path, int cols, int rows, float scalex, fl
   std::cout << "\tMax. Height: " << maxHeight << std::endl;
 
   // Sort vertex on y/x axis
-  std::sort(vertex.begin(), vertex.end(), vertexSort);
+  std::stable_sort(vertex.begin(), vertex.end(), xSort);
+  std::stable_sort(vertex.begin(), vertex.end(), ySort);
 
   // Create binary:
   Terrain* terrain = new Terrain();
@@ -179,8 +182,8 @@ Flow* parseFlow(std::string flow_path, float* timeStep) {
   }
   std::cout << "]" << std::endl;
 
-  *(timeStep) = float(anim_time)/frames;
-  std::cout << "\tTime Step: " << float(anim_time)/frames << " seconds" << std::endl;
+  *timeStep = float(anim_time)/(frames);
+  std::cout << "\tTime Step: " << *timeStep << " seconds" << std::endl;
 
   return flow;
 }
@@ -304,8 +307,6 @@ int main(int argc, char *argv[]) {
     config_object["friction"].get<double>(),
     config_object["rollingResistance"].get<double>()
   );
-  rp3d::SphereShape objectShape(rp3d::decimal(0.5));
-  object->addCollisionShape(&objectShape, rp3d::Transform::identity(), rp3d::decimal(1));
 
   // Parse the flow file
   picojson::object config_flow = config["flow"].get<picojson::object>();
@@ -315,8 +316,10 @@ int main(int argc, char *argv[]) {
   // Update World by time step and write position to output file
   std::ofstream outputFile(output_path);
   for (int f=0; f<int(flow->size()); f++) {
+    // For each flow update, update the world 10 times in 1/10 timestep
     updateFlow(flow, object, config_flow["threshold"].get<double>(), f);
-    world.update(timeStep);
+    for (int t = 0; t < 10; t++)
+      world.update(timeStep/10.0);
 
     // Print the updated transform of the body
     rp3d::Vector3 curPosition = object->getTransform().getPosition();

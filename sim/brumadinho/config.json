@@ -13,22 +13,22 @@
 
   "terrain":
   {
-    "cols" : 80,
-    "rows" : 67,
-    "scalex" : 30.5748,
-    "scaley" : 25.6063,
-    "bounciness" : 0.02,
-    "friction" : 1,
-    "rollingResistance" : 0.15
+    "cols" : 99,
+    "rows" : 83,
+    "scalex" : 37.8363,
+    "scaley" : 31.7167,
+    "bounciness" : 0.0,
+    "friction" : 0.8,
+    "rollingResistance" : 0.0
   },
 
   "object":
   {
-    "position" : [-0.153, -2.3, -0.15],
-    "radius" : 0.01,
+    "position" : [4.7, 2.2, -0.75],
+    "radius" : 0.1,
     "mass" : 1,
-    "bounciness" : 0.1,
-    "friction" : 1,
+    "bounciness" : 0.05,
+    "friction" : 0.3,
     "rollingResistance" : 0.02
   },
 

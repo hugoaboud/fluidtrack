@@ -11,7 +11,7 @@
 
 import bpy
 
-file = open('/home/aboud/fluidtrack/sandbox.csv')
+file = open('/home/aboud/fluidtrack/brumadinho.out')
 frames = file.readlines()
 
 obj = bpy.context.object
