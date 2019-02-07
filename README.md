@@ -21,7 +21,7 @@ make
   ![bake](https://user-images.githubusercontent.com/2349393/52071516-56879d00-256a-11e9-9812-ae7c13876c29.gif)
   
   3. Run the _parse_cache_ script (more info below) to generate the .flow file
-  > python scripts/parse_cache.py sim/brumadinho/cache_fluid sim/brumadinho/fluid.flow 50 [0, 0, 0.203386] [19, 18.5, 3]
+  > python3.5 scripts/parse_cache.py sim/brumadinho/cache_fluid/ sim/brumadinho/fluid.flow 50 [0,0,0.203386] [19,18.5,3]
   
   4. Run fluidtrack passing the desired config json as argument
   > ./fluidtrack sim/brumadinho/config.json
@@ -41,7 +41,7 @@ Arguments:
   4. position array (from Blender Object transform)
   5. scale array (from Blender Object transform)
 Example:
-> python scripts/parse_cache.py sim/brumadinho/cache_fluid sim/brumadinho/fluid.flow 50 [0, 0, 0.35] [15, 12.5, 1]
+> python3.5 scripts/parse_cache.py sim/brumadinho/cache_fluid/ sim/brumadinho/fluid.flow 50 [0,0,0.203386] [19,18.5,3]
 
 ##### scripts/export_terrain.py
 Blender script for exporting the selected mesh as a .csv file containing the vertex position.
