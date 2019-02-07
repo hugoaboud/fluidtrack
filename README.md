@@ -18,7 +18,7 @@ make
   1. Open Blender simulation at _sim/@/@.blend_
   
   2. Bake fluid simulation:
-  ![bake](https://user-images.githubusercontent.com/2349393/52071516-56879d00-256a-11e9-9812-ae7c13876c29.gif)
+  ![bake](https://s2.gifyu.com/images/tutorial197706bdaaa4f1e8d.gif)
   
   3. Run the _parse_cache_ script (more info below) to generate the .flow file
   > python3.5 scripts/parse_cache.py sim/brumadinho/cache_fluid/ sim/brumadinho/fluid.flow 50 [0,0,0.203386] [19,18.5,3]
@@ -27,7 +27,7 @@ make
   > ./fluidtrack sim/brumadinho/config.json
   
   5. To visualize the results, select the Object on Blender and run Blender script _import_anim_ to create position/orientation keyframes:
-  ![import_anim](https://s2.gifyu.com/images/import_anim.gif)
+  ![import_anim](https://s2.gifyu.com/images/tutorial2.gif)
   
 #### Scripts
 
